@@ -9,12 +9,12 @@ public interface SupplierService {
 
     List<SupplierEntity> findSuppliers();
 
-    SupplierEntity findSupplier(String cnpj, String cpf);
+    SupplierEntity findSupplier(SupplierDTO supplierDTO);
 
-    SupplierDTO updateSupplier(String cnpj, String cpf, SupplierDTO supplierDTO);
+    void updateSupplier(SupplierDTO supplierDTO);
     void saveSupplier(SupplierDTO supplier);
 
-    void deletSupplier(String cnpj, String cpf);
+    void deletSupplier(SupplierDTO supplierDTO);
 
 
 }

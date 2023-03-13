@@ -1,5 +1,6 @@
 package com.gabriel.andrade.company_supplier.dto;
 
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

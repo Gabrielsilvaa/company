@@ -29,4 +29,7 @@ public class SupplierDTO {
     @NotEmpty(message = "CEP can't be null")
     private String cep;
 
+    private String rg;
+
+    private String dateOfBirth;
 }

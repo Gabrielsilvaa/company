@@ -4,9 +4,7 @@ import com.gabriel.andrade.company_supplier.dto.CompanyDTO;
 import com.gabriel.andrade.company_supplier.entity.CompanyEntity;
 import com.gabriel.andrade.company_supplier.repository.CompanyRepository;
 import com.gabriel.andrade.company_supplier.service.CompanyService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

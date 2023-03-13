@@ -1,9 +1,6 @@
 package com.gabriel.andrade.company_supplier.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +17,11 @@ public class SupplierEntity {
     private Long id;
 
     @CNPJ
+    @Column(name = "CNJP")
     private String cnpj;
 
     @CPF
+    @Column(name = "CPF")
     private String cpf;
 
     @NotEmpty(message = "name can't be null")
@@ -33,5 +32,9 @@ public class SupplierEntity {
 
     @NotEmpty(message = "CEP can't be null")
     private String cep;
+
+    private String rg;
+
+    private String dateOfBirth;
 
 }

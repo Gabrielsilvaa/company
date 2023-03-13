@@ -23,38 +23,70 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierEntity findSupplier(String cnpj, String cpf) {
-        SupplierEntity supplierCnpj = supplierRepository.findCnpj(cnpj);
-        if (Objects.nonNull(supplierCnpj)){
-            return supplierCnpj;
+    public SupplierEntity findSupplier(SupplierDTO supplierDTO) {
+        if (Objects.nonNull(supplierDTO.getCpf())){
+            return supplierRepository.findCpf(supplierDTO.getCpf());
+        } else if (Objects.nonNull(supplierDTO.getCnpj())) {
+            return supplierRepository.findCnpj(supplierDTO.getCnpj());
         }
-        return supplierRepository.findCpf(cpf);
+        return supplierRepository.findName(supplierDTO.getName());
     }
 
     @Override
-    public SupplierDTO updateSupplier(String cnpj, String cpf, SupplierDTO supplierDTO) {
-        return null;
+    public void updateSupplier(SupplierDTO supplierDTO) {
+        if (Objects.nonNull(supplierDTO.getCpf())){
+            SupplierEntity cpf = supplierRepository.findCpf(supplierDTO.getCpf());
+            supplierRepository.save(getSupplier(supplierDTO, cpf.getId() ));
+        } else if (Objects.nonNull(supplierDTO.getCnpj())) {
+            SupplierEntity cnpj = supplierRepository.findCnpj(supplierDTO.getCnpj());
+            supplierRepository.save(getSupplier(supplierDTO, cnpj.getId() ));
+        }
     }
 
     @Override
     public void saveSupplier(SupplierDTO supplier) {
+        validateSupplier(supplier);
+        if (Objects.nonNull(supplier.getCpf())){
+            supplierRepository.save(getSupplier(supplier, null));
+        }else {
+            supplierRepository.save(getSupplier(supplier, null));
+        }
+    }
+
+
+    @Override
+    public void deletSupplier(SupplierDTO supplierDTO) {
+        SupplierEntity repositoryCnpj = supplierRepository.findCnpj(supplierDTO.getCnpj());
+        SupplierEntity repositoryCpf = supplierRepository.findCpf(supplierDTO.getCpf());
+        if (Objects.nonNull(repositoryCpf)){
+            supplierRepository.deleteById(repositoryCpf.getId());
+        } else if (Objects.nonNull(repositoryCnpj)) {
+            supplierRepository.deleteById(repositoryCnpj.getId());
+        }
+    }
+
+    private void validateSupplier(SupplierDTO supplier) {
+        SupplierEntity cnpj = supplierRepository.findCnpj(supplier.getCnpj());
+        SupplierEntity cpf = supplierRepository.findCpf(supplier.getCpf());
+        if (Objects.nonNull(cnpj)){
+            throw new RuntimeException();
+        } else if (Objects.nonNull(cpf)) {
+            throw new RuntimeException();
+        }
+    }
+
+    private static SupplierEntity getSupplier(SupplierDTO supplier, Long id) {
         SupplierEntity supplierEntity = new SupplierEntity();
+        if (Objects.nonNull(id)){
+            supplierEntity.setId(id);
+        }
         supplierEntity.setCep(supplier.getCep());
         supplierEntity.setName(supplier.getName());
         supplierEntity.setCnpj(supplier.getCnpj());
         supplierEntity.setEmail(supplier.getEmail());
-        supplierEntity.setCpf(supplierEntity.getCpf());
-        supplierRepository.save(supplierEntity);
-    }
-
-    @Override
-    public void deletSupplier(String cnpj, String cpf) {
-        SupplierEntity repositoryCnpj = supplierRepository.findCnpj(cnpj);
-        SupplierEntity repositoryCpf = supplierRepository.findCpf(cpf);
-        if (Objects.nonNull(repositoryCpf)){
-            supplierRepository.deleteById(repositoryCpf.getId()));
-        } else if (Objects.nonNull(repositoryCnpj)) {
-
-        }
+        supplierEntity.setCpf(supplier.getCpf());
+        supplierEntity.setRg(supplier.getRg());
+        supplierEntity.setDateOfBirth(supplierEntity.getDateOfBirth());
+        return supplierEntity ;
     }
 }
