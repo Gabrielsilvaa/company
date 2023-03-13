@@ -22,9 +22,9 @@ public class CompanyController {
         return ResponseEntity.ok(companyService.findCompanys());
     }
 
-    @GetMapping("/{cnpj}")
-    public ResponseEntity<CompanyEntity> findCompanyByCnpj(@Valid @PathVariable String cnpj){
-        return ResponseEntity.ok(companyService.findCompanyByCnpj(cnpj));
+    @GetMapping("/find")
+    public ResponseEntity<CompanyEntity> findCompanyByCnpj(@RequestBody CompanyDTO companyDTO){
+        return ResponseEntity.ok(companyService.findCompanyByCnpj(companyDTO));
     }
 
     @PostMapping

@@ -1,7 +1,6 @@
 package com.gabriel.andrade.company_supplier.service.impl;
 
 import com.gabriel.andrade.company_supplier.dto.SupplierDTO;
-import com.gabriel.andrade.company_supplier.entity.CompanyEntity;
 import com.gabriel.andrade.company_supplier.entity.SupplierEntity;
 import com.gabriel.andrade.company_supplier.repository.SupplierRepository;
 import com.gabriel.andrade.company_supplier.service.SupplierService;
@@ -46,9 +45,7 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public void saveSupplier(SupplierDTO supplier) {
         validateSupplier(supplier);
-        if (Objects.nonNull(supplier.getCpf())){
-            supplierRepository.save(getSupplier(supplier, null));
-        }else {
+        if (Objects.nonNull(supplier.getCpf()) || Objects.nonNull(supplier.getCnpj())){
             supplierRepository.save(getSupplier(supplier, null));
         }
     }
@@ -69,9 +66,9 @@ public class SupplierServiceImpl implements SupplierService {
         SupplierEntity cnpj = supplierRepository.findCnpj(supplier.getCnpj());
         SupplierEntity cpf = supplierRepository.findCpf(supplier.getCpf());
         if (Objects.nonNull(cnpj)){
-            throw new RuntimeException();
+            throw new RuntimeException("cnpj ja cadastrado");
         } else if (Objects.nonNull(cpf)) {
-            throw new RuntimeException();
+            throw new RuntimeException("cpf ja cadastrado");
         }
     }
 

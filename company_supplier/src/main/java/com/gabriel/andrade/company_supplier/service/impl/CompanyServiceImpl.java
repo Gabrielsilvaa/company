@@ -22,8 +22,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyEntity findCompanyByCnpj(String cnpj) {
-        return companyRepository.findCnpj(cnpj);
+    public CompanyEntity findCompanyByCnpj(CompanyDTO companyDTO) {
+        if (Objects.nonNull(companyDTO.getFantasyName())){
+            return companyRepository.findName(companyDTO.getFantasyName());
+        }
+        return companyRepository.findCnpj(companyDTO.getCnpj());
     }
 
     @Override

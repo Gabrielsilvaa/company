@@ -27,19 +27,19 @@ public class SupplierController {
     }
 
     @PostMapping
-    public ResponseEntity saveService(@RequestBody SupplierDTO supplierDTO){
+    public ResponseEntity saveSupplier(@RequestBody SupplierDTO supplierDTO){
         supplierService.saveSupplier(supplierDTO);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
-    public ResponseEntity deletCompany(@RequestBody SupplierDTO supplierDTO){
+    public ResponseEntity deletSupplier(@RequestBody SupplierDTO supplierDTO){
         supplierService.deletSupplier(supplierDTO);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
-    public ResponseEntity updateCompany(@RequestBody SupplierDTO supplierDTO){
+    public ResponseEntity updateSupplier(@RequestBody SupplierDTO supplierDTO){
         supplierService.updateSupplier(supplierDTO);
         return ResponseEntity.ok().build();
     }

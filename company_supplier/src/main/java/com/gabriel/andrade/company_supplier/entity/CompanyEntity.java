@@ -1,6 +1,5 @@
 package com.gabriel.andrade.company_supplier.entity;
 
-import com.gabriel.andrade.company_supplier.dto.SupplierDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
