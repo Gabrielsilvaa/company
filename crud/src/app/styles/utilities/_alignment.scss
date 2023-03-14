@@ -1,0 +1,100 @@
+@import 'variables';
+$alignments: ("center", "space-between", "space-around", "space-evenly", "flex-start", "flex-end");
+
+@each $align in $alignments {
+  .justify-#{$align} {
+    justify-content: #{$align};
+  }
+
+  .items-#{$align} {
+    align-items: #{$align};
+  }
+
+  .justify-items-#{$align} {
+    justify-items: #{$align};
+  }
+
+  .content-#{$align} {
+    align-content: #{$align};
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-sm) and (max-width: $mvp-sys-breakpoint-max-width-sm){
+  @each $align in $alignments {
+    .justify-sm-#{$align} {
+      justify-content: #{$align};
+    }
+
+    .items-sm-#{$align} {
+      align-items: #{$align};
+    }
+
+    .justify-sm-items-#{$align} {
+      justify-items: #{$align};
+    }
+
+    .content-sm-#{$align} {
+      align-content: #{$align};
+    }
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-md) and (max-width: $mvp-sys-breakpoint-max-width-md){
+  @each $align in $alignments {
+    .justify-md-#{$align} {
+      justify-content: #{$align};
+    }
+
+    .items-md-#{$align} {
+      align-items: #{$align};
+    }
+
+    .justify-md-items-#{$align} {
+      justify-items: #{$align};
+    }
+
+    .content-md-#{$align} {
+      align-content: #{$align};
+    }
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-lg) and (max-width: $mvp-sys-breakpoint-max-width-lg){
+  @each $align in $alignments {
+    .justify-lg-#{$align} {
+      justify-content: #{$align};
+    }
+
+    .items-lg-#{$align} {
+      align-items: #{$align};
+    }
+
+    .justify-lg-items-#{$align} {
+      justify-items: #{$align};
+    }
+
+    .content-lg-#{$align} {
+      align-content: #{$align};
+    }
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-xl) {
+  @each $align in $alignments {
+    .justify-xl-#{$align} {
+      justify-content: #{$align};
+    }
+
+    .items-xl-#{$align} {
+      align-items: #{$align};
+    }
+
+    .justify-xl-items-#{$align} {
+      justify-items: #{$align};
+    }
+
+    .content-xl-#{$align} {
+      align-content: #{$align};
+    }
+  }
+}

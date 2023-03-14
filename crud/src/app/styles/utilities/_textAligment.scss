@@ -1,0 +1,40 @@
+@import 'variables';
+$textAlignments: ("left", "right", "center", "revert");
+
+@each $textAlign in $textAlignments {
+  .text-#{$textAlign} {
+    text-align: #{$textAlign};
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-sm) and (max-width: $mvp-sys-breakpoint-max-width-sm){
+  @each $textAlign in $textAlignments {
+    .text-sm-#{$textAlign} {
+      text-align: #{$textAlign};
+    }
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-md) and (max-width: $mvp-sys-breakpoint-max-width-md){
+  @each $textAlign in $textAlignments {
+    .text-md-#{$textAlign} {
+      text-align: #{$textAlign};
+    }
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-lg) and (max-width: $mvp-sys-breakpoint-max-width-lg){
+  @each $textAlign in $textAlignments {
+    .text-lg-#{$textAlign} {
+      text-align: #{$textAlign};
+    }
+  }
+}
+
+@media screen and (min-width: $mvp-sys-breakpoint-min-width-xl) {
+  @each $textAlign in $textAlignments {
+    .text-xl-#{$textAlign} {
+      text-align: #{$textAlign};
+    }
+  }
+}

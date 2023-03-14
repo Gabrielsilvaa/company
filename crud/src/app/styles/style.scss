@@ -1,0 +1,25 @@
+// UTILITIES
+@import 'utilities/alignment';
+@import 'utilities/display';
+@import 'utilities/spacing';
+@import 'utilities/textAligment';
+@import 'utilities/variables';
+@import 'utilities/mixins';
+// @import 'utilities/colors';
+
+// BASE
+@import 'base/reset';
+@import 'base/helpers';
+
+// COMPONENTS
+// @import 'components/...';
+
+// LAYOUT
+// @import 'layout/...';
+
+// PAGES
+// @import 'pages/...';
+
+.font-color-secondary {
+  color: $mvp-sys-font-color-secondary;
+}
