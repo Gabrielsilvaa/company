@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,5 +33,5 @@ public class SupplierDTO {
 
     private String rg;
 
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 }

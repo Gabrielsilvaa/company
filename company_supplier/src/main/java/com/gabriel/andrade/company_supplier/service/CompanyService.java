@@ -13,8 +13,8 @@ public interface CompanyService {
 
     CompanyEntity findCompanyByCnpj(CompanyDTO companyDTO);
 
-    void updateCompany(CompanyDTO companyDTO);
-    void saveCompany(CompanyDTO company);
+    CompanyEntity updateCompany(CompanyDTO companyDTO);
+    CompanyEntity saveCompany(CompanyDTO company);
 
     void deletCompany(String cnpj);
 

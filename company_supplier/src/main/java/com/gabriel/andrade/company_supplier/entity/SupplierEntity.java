@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -35,6 +37,6 @@ public class SupplierEntity {
 
     private String rg;
 
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
 }

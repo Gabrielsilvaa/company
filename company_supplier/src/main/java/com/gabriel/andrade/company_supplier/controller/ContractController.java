@@ -1,8 +1,6 @@
 package com.gabriel.andrade.company_supplier.controller;
 
 import com.gabriel.andrade.company_supplier.dto.ContractDTO;
-import com.gabriel.andrade.company_supplier.dto.SupplierDTO;
-import com.gabriel.andrade.company_supplier.entity.CompanyEntity;
 import com.gabriel.andrade.company_supplier.entity.ContractEntity;
 import com.gabriel.andrade.company_supplier.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;

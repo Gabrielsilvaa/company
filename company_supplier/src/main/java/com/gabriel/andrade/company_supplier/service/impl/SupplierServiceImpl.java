@@ -1,5 +1,7 @@
 package com.gabriel.andrade.company_supplier.service.impl;
 
+import com.gabriel.andrade.company_supplier.client.CepLaClient;
+import com.gabriel.andrade.company_supplier.dto.CepLaDTO;
 import com.gabriel.andrade.company_supplier.dto.SupplierDTO;
 import com.gabriel.andrade.company_supplier.entity.SupplierEntity;
 import com.gabriel.andrade.company_supplier.repository.SupplierRepository;
@@ -15,6 +17,9 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Autowired
     SupplierRepository supplierRepository;
+
+    @Autowired
+    CepLaClient cepLaClient;
 
     @Override
     public List<SupplierEntity> findSuppliers() {
@@ -35,18 +40,23 @@ public class SupplierServiceImpl implements SupplierService {
     public void updateSupplier(SupplierDTO supplierDTO) {
         if (Objects.nonNull(supplierDTO.getCpf())){
             SupplierEntity cpf = supplierRepository.findCpf(supplierDTO.getCpf());
-            supplierRepository.save(getSupplier(supplierDTO, cpf.getId() ));
+            supplierRepository.save(buildSupplier(supplierDTO, cpf.getId() ));
         } else if (Objects.nonNull(supplierDTO.getCnpj())) {
             SupplierEntity cnpj = supplierRepository.findCnpj(supplierDTO.getCnpj());
-            supplierRepository.save(getSupplier(supplierDTO, cnpj.getId() ));
+            supplierRepository.save(buildSupplier(supplierDTO, cnpj.getId() ));
         }
     }
 
     @Override
     public void saveSupplier(SupplierDTO supplier) {
+        CepLaDTO cepLa = cepLaClient.searchByZipCode(supplier.getCep());
+
+        if (Objects.isNull(cepLa)){
+            throw new RuntimeException("CEP NAO EXISTENTE");
+        }
         validateSupplier(supplier);
         if (Objects.nonNull(supplier.getCpf()) || Objects.nonNull(supplier.getCnpj())){
-            supplierRepository.save(getSupplier(supplier, null));
+            supplierRepository.save(buildSupplier(supplier, null));
         }
     }
 
@@ -65,14 +75,12 @@ public class SupplierServiceImpl implements SupplierService {
     private void validateSupplier(SupplierDTO supplier) {
         SupplierEntity cnpj = supplierRepository.findCnpj(supplier.getCnpj());
         SupplierEntity cpf = supplierRepository.findCpf(supplier.getCpf());
-        if (Objects.nonNull(cnpj)){
-            throw new RuntimeException("cnpj ja cadastrado");
-        } else if (Objects.nonNull(cpf)) {
-            throw new RuntimeException("cpf ja cadastrado");
+        if (Objects.nonNull(cnpj) || Objects.nonNull(cpf)){
+            throw new RuntimeException("cnpj / cpf ja cadastrado");
         }
     }
 
-    private static SupplierEntity getSupplier(SupplierDTO supplier, Long id) {
+    private static SupplierEntity buildSupplier(SupplierDTO supplier, Long id) {
         SupplierEntity supplierEntity = new SupplierEntity();
         if (Objects.nonNull(id)){
             supplierEntity.setId(id);
@@ -83,7 +91,7 @@ public class SupplierServiceImpl implements SupplierService {
         supplierEntity.setEmail(supplier.getEmail());
         supplierEntity.setCpf(supplier.getCpf());
         supplierEntity.setRg(supplier.getRg());
-        supplierEntity.setDateOfBirth(supplierEntity.getDateOfBirth());
+        supplierEntity.setDateOfBirth(supplier.getDateOfBirth());
         return supplierEntity ;
     }
 }

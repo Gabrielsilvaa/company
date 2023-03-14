@@ -1,7 +1,6 @@
 package com.gabriel.andrade.company_supplier.repository;
 
 import com.gabriel.andrade.company_supplier.entity.CompanyEntity;
-import com.gabriel.andrade.company_supplier.entity.SupplierEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
