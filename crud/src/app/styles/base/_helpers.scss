@@ -1,0 +1,23 @@
+@import "../utilities/variables";
+@import "../utilities/mixins";
+
+.container {
+    max-width: $mvp-comp-container-max-width;
+    margin: 0 auto;
+
+    @include breakpoint-sm {
+        max-width: $mvp-comp-container-max-width-sm;
+    }
+
+    @include breakpoint-md {
+        max-width: $mvp-comp-container-max-width-md;
+    }
+
+    @include breakpoint-lg {
+        max-width: $mvp-comp-container-max-width-lg;
+    }
+
+    @include breakpoint-xl {
+      max-width: 90%;
+    }
+}

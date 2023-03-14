@@ -1,0 +1,40 @@
+// DESIGN TOKEN
+//
+// TOKEN
+// $product-type-attribute-role
+//
+// eg.:
+// $mvp-sys-font-family-primary
+// ---- --- ----------- -------
+// |    |   |           |
+// |    |   |           role
+// |    |   |
+// |    |   attribute
+// |    |
+// |    type
+// |
+// product
+//
+// Types:
+// - sys: system / design system
+// - comp: component
+//
+
+
+$mvp-sys-font-color-primary: #000;
+$mvp-sys-font-color-secondary: #6750A4;
+
+$mvp-sys-breakpoint-min-width-sm: 599px;
+$mvp-sys-breakpoint-min-width-md: 905px;
+$mvp-sys-breakpoint-min-width-lg: 1240px;
+$mvp-sys-breakpoint-min-width-xl: 1440px;
+
+$mvp-sys-breakpoint-max-width-sm: 904px;
+$mvp-sys-breakpoint-max-width-md: 1239px;
+$mvp-sys-breakpoint-max-width-lg: 1439px;
+
+$mvp-comp-container-max-width: 360px;
+$mvp-comp-container-max-width-sm: 536px;
+$mvp-comp-container-max-width-md: 857px;
+$mvp-comp-container-max-width-lg: 880px;
+$mvp-comp-container-max-width-xl: 1500px;
