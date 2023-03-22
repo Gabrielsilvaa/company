@@ -23,7 +23,11 @@ public class CompanyController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<List<CompanyEntity>> findCompanyByCnpj(@RequestBody CompanyDTO companyDTO){
+    public ResponseEntity<List<CompanyEntity>> findCompanyByCnpj(@RequestParam(name = "cnpj", required = false) String cnpj,
+                                                                 @RequestParam(name = "name", required = false) String name){
+        CompanyDTO companyDTO = new CompanyDTO();
+        companyDTO.setCnpj(cnpj);
+        companyDTO.setFantasyName(name);
         return ResponseEntity.ok(companyService.findCompanyByCnpj(companyDTO));
     }
 
