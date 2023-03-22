@@ -11,7 +11,7 @@ public interface CompanyService {
 
     List<CompanyEntity> findCompanys();
 
-    CompanyEntity findCompanyByCnpj(CompanyDTO companyDTO);
+    List<CompanyEntity> findCompanyByCnpj(CompanyDTO companyDTO);
 
     CompanyEntity updateCompany(CompanyDTO companyDTO);
     CompanyEntity saveCompany(CompanyDTO company);

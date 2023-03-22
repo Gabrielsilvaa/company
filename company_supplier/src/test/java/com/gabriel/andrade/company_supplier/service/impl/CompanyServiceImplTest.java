@@ -39,7 +39,7 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    void findCompanys() {
+    void should_return_companys() {
         List<CompanyEntity> companyEntities = new ArrayList();
         companyEntities.add(new CompanyEntity());
 
@@ -52,28 +52,28 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    void should_retour_find_by_cnpj() {
-        CompanyEntity companyEntities = new CompanyEntity();
+    void should_return_find_by_cnpjs() {
+        List<CompanyEntity> companyEntities = new ArrayList<>();
         CompanyDTO companyDTO = new CompanyDTO();
         companyDTO.setCnpj("02593356000101");
 
-        given(companyRepository.findCnpj("02593356000101")).willReturn(companyEntities);
+        given(companyRepository.findCnpjs("02593356000101")).willReturn(companyEntities);
 
-        CompanyEntity expected = companyService.findCompanyByCnpj(companyDTO);
+        List<CompanyEntity> expected = companyService.findCompanyByCnpj(companyDTO);
 
         assertEquals(expected, companyEntities);
-        verify(companyRepository).findCnpj("02593356000101");
+        verify(companyRepository).findCnpjs("02593356000101");
     }
 
     @Test
-    void should_retour_find_by_name() {
-        CompanyEntity companyEntities = new CompanyEntity();
+    void should_return_find_by_name() {
+        List<CompanyEntity> companyEntities = new ArrayList<>();
         CompanyDTO companyDTO = new CompanyDTO();
         companyDTO.setFantasyName("teste");
 
         given(companyRepository.findName("teste")).willReturn(companyEntities);
 
-        CompanyEntity expected = companyService.findCompanyByCnpj(companyDTO);
+        List<CompanyEntity> expected = companyService.findCompanyByCnpj(companyDTO);
 
         assertEquals(expected, companyEntities);
         verify(companyRepository).findName("teste");

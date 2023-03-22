@@ -6,11 +6,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CompanyRepository extends JpaRepository<CompanyEntity, Long> {
+
     @Query(value = "select * from COMPANY_ENTITY where cnjp = :cnpj", nativeQuery = true)
     CompanyEntity findCnpj(@Param("cnpj") String cnpj);
 
-    @Query(value = "select * from COMPANY_ENTITY  where FANTASY_NAME =:name", nativeQuery = true)
-    CompanyEntity findName(@Param("name") String name);
+    @Query(value = "SELECT * FROM COMPANY_ENTITY  WHERE  cnjp LIKE CONCAT('%:',:cnpj,'%')", nativeQuery = true)
+    List<CompanyEntity> findCnpjs(@Param("cnpj") String cnpj);
+
+    @Query(value = "SELECT * FROM COMPANY_ENTITY  WHERE  FANTASY_NAME LIKE CONCAT('%',:name,'%')", nativeQuery = true)
+    List<CompanyEntity> findName(@Param("name") String name);
 }

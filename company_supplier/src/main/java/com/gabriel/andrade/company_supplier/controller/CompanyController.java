@@ -23,7 +23,7 @@ public class CompanyController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<CompanyEntity> findCompanyByCnpj(@RequestBody CompanyDTO companyDTO){
+    public ResponseEntity<List<CompanyEntity>> findCompanyByCnpj(@RequestBody CompanyDTO companyDTO){
         return ResponseEntity.ok(companyService.findCompanyByCnpj(companyDTO));
     }
 
