@@ -14,7 +14,7 @@ public interface CompanyRepository extends JpaRepository<CompanyEntity, Long> {
     @Query(value = "select * from COMPANY_ENTITY where cnjp = :cnpj", nativeQuery = true)
     CompanyEntity findCnpj(@Param("cnpj") String cnpj);
 
-    @Query(value = "SELECT * FROM COMPANY_ENTITY  WHERE  cnjp LIKE CONCAT('%:',:cnpj,'%')", nativeQuery = true)
+    @Query(value = "SELECT * FROM COMPANY_ENTITY  where cnjp LIKE CONCAT('%',:cnpj,'%')", nativeQuery = true)
     List<CompanyEntity> findCnpjs(@Param("cnpj") String cnpj);
 
     @Query(value = "SELECT * FROM COMPANY_ENTITY  WHERE  FANTASY_NAME LIKE CONCAT('%',:name,'%')", nativeQuery = true)
