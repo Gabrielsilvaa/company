@@ -43,7 +43,7 @@ public class ContractServiceImpl implements ContractService {
 
         CepLaDTO cepLaDTO = cepLaClient.searchByZipCode(contract.getIdCompany().getCep());
 
-        if ("PR".equals(cepLaDTO.getUf()) &&  age(contract.getIdSupplier().getDateOfBirth()) < 18){
+        if ("PR".equals(cepLaDTO.getUf()) && age(contract.getIdSupplier().getDateOfBirth()) < 18){
            throw new RuntimeException("FORNECEDOR NAO TEM A IDADE PERMITIDA");
         }
         contractRepository.save(setContract(contract, null));
