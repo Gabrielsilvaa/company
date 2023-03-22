@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 @Service
@@ -64,7 +65,7 @@ public class CompanyServiceImpl implements CompanyService {
         CompanyEntity companyEntity = new CompanyEntity();
         companyEntity.setCep(company.getCep());
         companyEntity.setCnpj(company.getCnpj());
-        companyEntity.setFantasyName(company.getFantasyName());
+        companyEntity.setFantasyName(company.getFantasyName().toUpperCase(Locale.ROOT));
 
         return companyRepository.save(companyEntity);
     }
