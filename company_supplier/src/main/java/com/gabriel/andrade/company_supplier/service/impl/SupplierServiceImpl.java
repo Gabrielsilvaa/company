@@ -28,23 +28,16 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public List<SupplierEntity> findSupplier(SupplierDTO supplierDTO) {
-        if (Objects.nonNull(supplierDTO.getCpf())){
-            return supplierRepository.findCpfs(supplierDTO.getCpf());
-        } else if (Objects.nonNull(supplierDTO.getCnpj())) {
-            return supplierRepository.findCnpjs(supplierDTO.getCnpj());
+        if (Objects.nonNull(supplierDTO.getDocumentNumber())){
+            return supplierRepository.findByDocumentNumbers(supplierDTO.getDocumentNumber());
         }
         return supplierRepository.findName(supplierDTO.getName());
     }
 
     @Override
     public void updateSupplier(SupplierDTO supplierDTO) {
-        if (Objects.nonNull(supplierDTO.getCpf())){
-            SupplierEntity cpf = supplierRepository.findCpf(supplierDTO.getCpf());
-            supplierRepository.save(buildSupplier(supplierDTO, cpf.getId() ));
-        } else if (Objects.nonNull(supplierDTO.getCnpj())) {
-            SupplierEntity cnpj = supplierRepository.findCnpj(supplierDTO.getCnpj());
-            supplierRepository.save(buildSupplier(supplierDTO, cnpj.getId() ));
-        }
+            SupplierEntity supplier = supplierRepository.findByDocumentNumber(supplierDTO.getDocumentNumber());
+            supplierRepository.save(buildSupplier(supplierDTO, supplier.getId() ));
     }
 
     @Override
@@ -55,7 +48,7 @@ public class SupplierServiceImpl implements SupplierService {
             throw new RuntimeException("CEP NAO EXISTENTE");
         }
         validateSupplier(supplier);
-        if (Objects.nonNull(supplier.getCpf()) || Objects.nonNull(supplier.getCnpj())){
+        if (Objects.nonNull(supplier.getDocumentNumber())){
             supplierRepository.save(buildSupplier(supplier, null));
         }
     }
@@ -63,19 +56,15 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void deletSupplier(SupplierDTO supplierDTO) {
-        SupplierEntity repositoryCnpj = supplierRepository.findCnpj(supplierDTO.getCnpj());
-        SupplierEntity repositoryCpf = supplierRepository.findCpf(supplierDTO.getCpf());
-        if (Objects.nonNull(repositoryCpf)){
-            supplierRepository.deleteById(repositoryCpf.getId());
-        } else if (Objects.nonNull(repositoryCnpj)) {
-            supplierRepository.deleteById(repositoryCnpj.getId());
+        SupplierEntity entity = supplierRepository.findByDocumentNumber(supplierDTO.getDocumentNumber());
+        if (Objects.nonNull(entity)){
+            supplierRepository.deleteById(entity.getId());
         }
     }
 
     private void validateSupplier(SupplierDTO supplier) {
-        SupplierEntity cnpj = supplierRepository.findCnpj(supplier.getCnpj());
-        SupplierEntity cpf = supplierRepository.findCpf(supplier.getCpf());
-        if (Objects.nonNull(cnpj) || Objects.nonNull(cpf)){
+        SupplierEntity entity = supplierRepository.findByDocumentNumber(supplier.getDocumentNumber());
+        if (entity != null){
             throw new RuntimeException("cnpj / cpf ja cadastrado");
         }
     }
@@ -87,9 +76,9 @@ public class SupplierServiceImpl implements SupplierService {
         }
         supplierEntity.setCep(supplier.getCep());
         supplierEntity.setName(supplier.getName());
-        supplierEntity.setCnpj(supplier.getCnpj());
+        supplierEntity.setDocumentNumber(supplier.getDocumentNumber());
+        supplierEntity.setTypeDocument(supplier.getTypeDocument());
         supplierEntity.setEmail(supplier.getEmail());
-        supplierEntity.setCpf(supplier.getCpf());
         supplierEntity.setRg(supplier.getRg());
         supplierEntity.setDateOfBirth(supplier.getDateOfBirth());
         return supplierEntity ;

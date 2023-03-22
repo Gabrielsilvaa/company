@@ -22,15 +22,13 @@ public class SupplierController {
     }
 
     @GetMapping("/supplier")
-    public ResponseEntity<List<SupplierEntity>> findServiceByCnpj(
-            @RequestParam(name = "cnpj", required = false) String cnpj,
-            @RequestParam(name = "name", required = false) String name,
-            @RequestParam(name = "cpf", required = false) String cpf
+    public ResponseEntity<List<SupplierEntity>> findServiceByDocument(
+            @RequestParam(name = "documentNumber", required = false) String documentNumber,
+            @RequestParam(name = "name", required = false) String name
     ){
         SupplierDTO supplierDTO = new SupplierDTO();
-        supplierDTO.setCnpj(cnpj);
+        supplierDTO.setDocumentNumber(documentNumber);
         supplierDTO.setName(name);
-        supplierDTO.setCpf(cpf);
         return ResponseEntity.ok(supplierService.findSupplier(supplierDTO));
     }
 

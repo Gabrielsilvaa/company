@@ -16,11 +16,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class SupplierDTO {
 
-    @CNPJ
-    private String cnpj;
+    private String documentNumber;
 
-    @CPF
-    private String cpf;
+    @NotEmpty(message = "typeDocument can't be null")
+    private String typeDocument;
 
     @NotEmpty(message = "name can't be null")
     private String name;

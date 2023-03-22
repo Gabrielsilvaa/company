@@ -50,32 +50,19 @@ class SupplierServiceImplTest {
         verify(supplierRepository).findAll();
     }
 
+
     @Test
-    void should_return_find_by_cnpj() {
+    void should_return_find_by_documents() {
         List<SupplierEntity> supplierEntity = new ArrayList<>();
         SupplierDTO supplierDTO = new SupplierDTO();
-        supplierDTO.setCnpj("02593356000101");
+        supplierDTO.setDocumentNumber("10023575000");
 
-        given(supplierRepository.findCnpjs("02593356000101")).willReturn(supplierEntity);
+        given(supplierRepository.findByDocumentNumbers("10023575000")).willReturn(supplierEntity);
 
         List<SupplierEntity> expected = supplierService.findSupplier(supplierDTO);
 
         assertEquals(expected, supplierEntity);
-        verify(supplierRepository).findCnpjs("02593356000101");
-    }
-
-    @Test
-    void should_return_find_by_cpf() {
-        List<SupplierEntity> supplierEntity = new ArrayList<>();
-        SupplierDTO supplierDTO = new SupplierDTO();
-        supplierDTO.setCpf("10023575000");
-
-        given(supplierRepository.findCpfs("10023575000")).willReturn(supplierEntity);
-
-        List<SupplierEntity> expected = supplierService.findSupplier(supplierDTO);
-
-        assertEquals(expected, supplierEntity);
-        verify(supplierRepository).findCpfs("10023575000");
+        verify(supplierRepository).findByDocumentNumbers("10023575000");
     }
 
     @Test

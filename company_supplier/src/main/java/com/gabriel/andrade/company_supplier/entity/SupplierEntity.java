@@ -18,13 +18,13 @@ public class SupplierEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CNPJ
-    @Column(name = "CNJP")
-    private String cnpj;
 
-    @CPF
-    @Column(name = "CPF")
-    private String cpf;
+    @NotEmpty(message = "documentNumber can't be null")
+    private String documentNumber;
+
+    @NotEmpty(message = "typeDocument can't be null")
+    private String typeDocument;
+
 
     @NotEmpty(message = "name can't be null")
     private String name;
