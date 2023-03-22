@@ -27,11 +27,11 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierEntity findSupplier(SupplierDTO supplierDTO) {
+    public List<SupplierEntity> findSupplier(SupplierDTO supplierDTO) {
         if (Objects.nonNull(supplierDTO.getCpf())){
-            return supplierRepository.findCpf(supplierDTO.getCpf());
+            return supplierRepository.findCpfs(supplierDTO.getCpf());
         } else if (Objects.nonNull(supplierDTO.getCnpj())) {
-            return supplierRepository.findCnpj(supplierDTO.getCnpj());
+            return supplierRepository.findCnpjs(supplierDTO.getCnpj());
         }
         return supplierRepository.findName(supplierDTO.getName());
     }

@@ -52,41 +52,41 @@ class SupplierServiceImplTest {
 
     @Test
     void should_return_find_by_cnpj() {
-        SupplierEntity supplierEntity = new SupplierEntity();
+        List<SupplierEntity> supplierEntity = new ArrayList<>();
         SupplierDTO supplierDTO = new SupplierDTO();
         supplierDTO.setCnpj("02593356000101");
 
-        given(supplierRepository.findCnpj("02593356000101")).willReturn(supplierEntity);
+        given(supplierRepository.findCnpjs("02593356000101")).willReturn(supplierEntity);
 
-        SupplierEntity expected = supplierService.findSupplier(supplierDTO);
+        List<SupplierEntity> expected = supplierService.findSupplier(supplierDTO);
 
         assertEquals(expected, supplierEntity);
-        verify(supplierRepository).findCnpj("02593356000101");
+        verify(supplierRepository).findCnpjs("02593356000101");
     }
 
     @Test
     void should_return_find_by_cpf() {
-        SupplierEntity supplierEntity = new SupplierEntity();
+        List<SupplierEntity> supplierEntity = new ArrayList<>();
         SupplierDTO supplierDTO = new SupplierDTO();
         supplierDTO.setCpf("10023575000");
 
-        given(supplierRepository.findCpf("10023575000")).willReturn(supplierEntity);
+        given(supplierRepository.findCpfs("10023575000")).willReturn(supplierEntity);
 
-        SupplierEntity expected = supplierService.findSupplier(supplierDTO);
+        List<SupplierEntity> expected = supplierService.findSupplier(supplierDTO);
 
         assertEquals(expected, supplierEntity);
-        verify(supplierRepository).findCpf("10023575000");
+        verify(supplierRepository).findCpfs("10023575000");
     }
 
     @Test
     void should_return_find_by_name() {
-        SupplierEntity supplierEntity = new SupplierEntity();
+        List<SupplierEntity> supplierEntity = new ArrayList<>();
         SupplierDTO supplierDTO = new SupplierDTO();
         supplierDTO.setName("teste");
 
         given(supplierRepository.findName("teste")).willReturn(supplierEntity);
 
-        SupplierEntity expected = supplierService.findSupplier(supplierDTO);
+        List<SupplierEntity> expected = supplierService.findSupplier(supplierDTO);
 
         assertEquals(expected, supplierEntity);
         verify(supplierRepository).findName("teste");

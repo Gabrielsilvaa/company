@@ -9,7 +9,7 @@ public interface SupplierService {
 
     List<SupplierEntity> findSuppliers();
 
-    SupplierEntity findSupplier(SupplierDTO supplierDTO);
+    List<SupplierEntity> findSupplier(SupplierDTO supplierDTO);
 
     void updateSupplier(SupplierDTO supplierDTO);
     void saveSupplier(SupplierDTO supplier);
