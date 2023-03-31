@@ -1,0 +1,52 @@
+<app-toolbar></app-toolbar>
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Edit User</h2>
+  <form class="company-form" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <mat-form-field  class="form-group full-width">
+      <mat-label for="documentNumber">CPF/CNPJ:</mat-label>
+      <input mask="CPF_CNPJ" matInput type="text" formControlName="documentNumber" name="documentNumber" class="form-control" id="documentNumber" >
+    </mat-form-field >
+
+    <mat-form-field class="form-group full-width">
+      <mat-label for="name">Nome</mat-label>
+      <input matInput type="text" formControlName="name" name="name" class="form-control" id="name">
+    </mat-form-field >
+
+    <mat-form-field class="form-group full-width">
+      <mat-label for="email">E-mail</mat-label>
+      <input matInput type="email" formControlName="email" name="email" class="form-control" id="email">
+    </mat-form-field >
+
+    <div class="d-flex">
+      <mat-form-field  class="form-group full-width">
+        <mat-label for="cep">CEP</mat-label>
+        <input mask="00000-000" matInput type="text" formControlName="cep" name="cep" class="form-control" id="cep">
+      </mat-form-field >
+      <button type="button" mat-raised-button class="mt-md-1" (click)="checkCEP()">Validar CEP</button>
+    </div>
+    <span *ngIf="editForm.controls['cep'].errors?.['incorrect'] === true">
+      CEP Inválido
+    </span>
+    <span *ngIf="validCEP">
+      CEP Válido
+    </span>
+    <span *ngIf="editForm.controls['cep'].errors?.['null'] === true">
+      Insira um CEP
+    </span>
+
+    <mat-form-field class="form-group full-width">
+      <mat-label for="email">RG</mat-label>
+      <input matInput type="email" formControlName="rg" name="rg" class="form-control" id="rg" >
+    </mat-form-field >
+
+    <mat-form-field class="form-group full-width">
+      <mat-label for="birthdate">Data de Nascimento</mat-label>
+      <input mask="d0/M0/0000" [disabled]="true" matInput type="birthdate" formControlName="birthdate" name="birthdate" class="form-control" id="birthdate">
+    </mat-form-field >
+    <span *ngIf="editForm.controls['birthdate'].errors?.['minor'] === true">
+      Menor de idade!
+    </span>
+
+    <button [disabled]="editForm.invalid" mat-raised-button class="d-flex align-center quarter-width">{{actionLabel}}</button>
+  </form>
+</div>

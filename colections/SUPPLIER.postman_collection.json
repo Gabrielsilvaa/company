@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "95b18be5-0002-4015-b5ed-66dbcf88fce4",
+		"name": "SUPPLIER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8720286"
+	},
+	"item": [
+		{
+			"name": "FIND ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND BY",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers/supplier?documentNumber=61370907010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers",
+						"supplier"
+					],
+					"query": [
+						{
+							"key": "documentNumber",
+							"value": "61370907010"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAVE CNPJ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"documentNumber\": \"93239641000184\",\n    \"typeDocument\": \"cnpj\",\n    \"name\": \"Gabriel\",\n    \"email\": \"gabriel@gmail.com\",\n    \"cep\": \"06825025\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAVE CPF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"documentNumber\": \"61370907010\",\n    \"typeDocument\": \"cpf\",\n    \"name\": \"Silva\",\n    \"email\": \"silva@gmail.com\",\n    \"cep\": \"06825025\",\n    \"rg\": \"564654\",\n    \"dateOfBirth\": \"2010-01-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE CNPJ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"cnpj\": \"93239641000184\",\n        \"cpf\": null,\n        \"name\": \"Gabriel SILVA\",\n        \"email\": \"gabriel@gmail.com\",\n        \"cep\": \"066\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE CPF",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"documentNumber\": \"61370907010\",\n        \"typeDocument\": \"cpf\",\n        \"name\": \"testeteste123\",\n        \"email\": \"silva@gmail.com\",\n        \"cep\": \"06825025\",\n        \"rg\": \"564654\",\n        \"dateOfBirth\": \"2010-01-01\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE CNPJ",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"documentNumber\": \"93239641000184\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE CPF",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"documentNumber\": \"61370907010\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

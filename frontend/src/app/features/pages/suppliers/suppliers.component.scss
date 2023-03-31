@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+}
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+.form-fields mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+mat-form-field {
+  width: 220px;
+}
+
+.form-fields > * {
+  margin: 12px 0;
+}
+
+
+.form-fields {
+  display: flex;
+  align-items: flex-start;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.only-black, .only-black:link, .only-black:visited, .only-black:active{
+  color: #6750a4;
+}

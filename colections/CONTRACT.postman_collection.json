@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "df1936cd-5f6b-4909-8a4f-5f0f5e543f28",
+		"name": "CONTRACT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8720286"
+	},
+	"item": [
+		{
+			"name": "FIND ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE CONTRACT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idCompany\": {\n                \"idCompany\": 1,\n        \"cnpj\": \"02593356000101\",\n        \"fantasyName\": \"embu\",\n        \"cep\": \"80240-210\"\n    },\n    \"companyName\": \"123\",\n    \"idSupplier\": {\n        \"id\": 1,\n        \"email\": \"silva@gmail.com\",\n        \"cep\": \"06825025\",\n        \"rg\": \"564654\",\n        \"dateOfBirth\": \"1999-01-01\"\n    },\n    \"supplierName\": \"123\",\n    \"status\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE CONTRACT Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 1,\n        \"idCompany\": {\n            \"idCompany\": 1\n        },\n        \"companyName\": \"123\",\n        \"idSupplier\": {\n            \"id\": 1\n        },\n        \"supplierName\": \"HHJH\",\n        \"status\": \"desatvado\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contract"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
